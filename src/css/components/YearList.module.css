@@ -1,0 +1,9 @@
+.yearList {
+  background-color: #655d73;
+  height: 100%;
+  width: 8rem;
+  text-align: center;
+  position: fixed;
+  left: 8rem;
+  border-left: 1px #fff solid;
+}

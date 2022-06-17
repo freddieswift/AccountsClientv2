@@ -1,0 +1,12 @@
+.tabWrapper {
+  flex-grow: 1;
+  margin-left: 16rem;
+}
+
+.financialTab {
+  margin-left: 16rem;
+}
+
+.socksTab {
+  margin-left: 8rem;
+}

@@ -1,0 +1,19 @@
+.loginFormContainer {
+  background-color: #cdcdcd;
+  max-width: 20rem;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.loginFormContainer > h1 {
+  margin-bottom: 1rem;
+}
+
+.toggleLogin {
+  margin-top: 1rem;
+}

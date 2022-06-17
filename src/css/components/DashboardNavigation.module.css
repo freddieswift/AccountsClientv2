@@ -1,0 +1,20 @@
+.dashboardNavigation {
+  background-color: #3c3744;
+  height: 100%;
+  width: 8rem;
+  text-align: center;
+  position: fixed;
+}
+
+.link {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-bottom: 1px rgb(207, 207, 207) solid;
+}
+
+.activeLink {
+  background-color: #6d647d;
+}
