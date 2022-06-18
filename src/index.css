@@ -23,10 +23,13 @@ code {
   font-size: 1.2rem;
   padding: 0.8rem;
   border-radius: 1.2rem;
+  color: #050758;
+  background-color: #b4c5e4;
 }
 
 .btn:hover {
-  background-color: #fff;
+  background-color: #c3c9d4;
+  cursor: pointer;
 }
 
 html,

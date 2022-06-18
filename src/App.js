@@ -16,13 +16,11 @@ function App() {
         }
         >
           <Route path='/socks' element={
-
-            <ProtectedRoute>
-              <SockTab />
-            </ProtectedRoute>
-
+            <SockTab />
           } />
-          <Route path='/financial' element={<ProtectedRoute><FinancialTab /></ProtectedRoute>} />
+          <Route index element={
+            <FinancialTab />
+          } />
         </ Route>
         <Route path='*' element={<div>whoops...</div>} />
       </Routes>

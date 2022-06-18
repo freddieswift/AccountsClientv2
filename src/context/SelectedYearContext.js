@@ -18,7 +18,6 @@ const SelectedYearContextProvider = ({ children }) => {
     }
 
     const getListOfYears = async () => {
-        console.log(state)
         const url = process.env.REACT_APP_API_BASE_URL + '/year'
         try {
             const response = await fetch(url, {

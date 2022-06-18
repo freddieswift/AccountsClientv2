@@ -34,15 +34,54 @@ const AppContextProvider = ({ children }) => {
     }
 
     const updateInfo = (field, value) => {
-        console.log(field, value)
         setState({
             ...state,
             [field]: value
         })
     }
 
+    const getListOfYears = async () => {
+        const url = process.env.REACT_APP_API_BASE_URL + '/year'
+        try {
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': state.token
+                }
+            })
+            const responseJSON = await response.json()
+            setState({
+                ...state,
+                listOfYears: responseJSON
+            })
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
 
-    return <AppContext.Provider value={{ ...state, login, logout, updateInfo }}>
+    const addYear = async (yearName) => {
+        const url = process.env.REACT_APP_API_BASE_URL + '/year'
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({
+                    "name": yearName
+                }),
+                headers: {
+                    'Authorization': state.token,
+                    'Content-Type': 'application/json'
+                }
+            })
+            const responseJSON = await response.json()
+            getListOfYears()
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    return <AppContext.Provider value={{ ...state, login, logout, addYear, updateInfo, getListOfYears }}>
         {children}
     </AppContext.Provider>
 }

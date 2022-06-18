@@ -9,7 +9,9 @@ const Dashboard = () => {
             <Header />
             <div className={classes.dashboardContent}>
                 <DashboardNavigation />
-                <Outlet />
+                <div className={classes.tabView}>
+                    <Outlet />
+                </div>
             </div>
         </div>
     )

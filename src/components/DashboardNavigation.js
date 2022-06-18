@@ -6,7 +6,7 @@ const DashboardNavigation = () => {
     const location = useLocation()
     return (
         <nav className={classes.dashboardNavigation}>
-            <Link to='/financial' className={`${location.pathname === '/financial' ? classes.activeLink : ''} ${classes.link}`}>Financial</Link>
+            <Link to='/' className={`${location.pathname === '/' ? classes.activeLink : ''} ${classes.link}`}>Financial</Link>
             <Link to='/socks' className={`${location.pathname === '/socks' ? classes.activeLink : ''} ${classes.link}`}>Socks</Link>
         </nav>
     )

@@ -11,3 +11,8 @@
 .tabOutlet {
   flex-grow: 1;
 }
+
+.tabView {
+  flex-grow: 1;
+  margin-left: 8rem;
+}
