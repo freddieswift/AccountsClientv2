@@ -5,6 +5,7 @@ import DashboardNavigation from "./DashboardNavigation";
 import YearList from "./YearList";
 import YearCard from "./YearCard";
 import AddYear from "./AddYear";
+import YearTable from './YearTable'
 
 export {
     FormRow,
@@ -13,5 +14,6 @@ export {
     DashboardNavigation,
     YearList,
     YearCard,
-    AddYear
+    AddYear,
+    YearTable
 }

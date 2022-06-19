@@ -73,7 +73,6 @@ const AppContextProvider = ({ children }) => {
                     'Content-Type': 'application/json'
                 }
             })
-            const responseJSON = await response.json()
             getListOfYears()
         }
         catch (error) {

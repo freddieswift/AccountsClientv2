@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Login, Dashboard } from './pages'
 import { ProtectedRoute } from './components'
-import { FinancialTab, SockTab } from './tabs'
+import { FinancialTab, SockTab, YearTab } from './tabs'
 
 
 function App() {
@@ -17,6 +17,9 @@ function App() {
         >
           <Route path='/socks' element={
             <SockTab />
+          } />
+          <Route path='/year' element={
+            <YearTab />
           } />
           <Route index element={
             <FinancialTab />

@@ -1,0 +1,43 @@
+.yearTable {
+  background-color: #b4c5e4;
+  color: #050758;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 1rem;
+  border-spacing: 0;
+}
+
+.yearTableRow {
+  text-align: center;
+}
+
+.yearTableRow > td {
+  padding: 0.8rem 0;
+  border: none;
+  cursor: pointer;
+}
+
+.yearTableHeaderRow > th {
+  padding: 0.2rem 0;
+  border: none;
+}
+
+.yearTable > tbody > tr:nth-child(odd) {
+  background-color: #cadcff;
+}
+
+.circle {
+  background-color: red;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 0.6rem;
+}
+
+.activeCircle {
+  background-color: green;
+}
+
+.activeTableData {
+  display: flex;
+  justify-content: center;
+}
