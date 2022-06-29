@@ -2,10 +2,10 @@ import React, { useContext, useState } from 'react'
 
 const AppContext = React.createContext()
 
-const account = localStorage.getItem('account')
+//const account = localStorage.getItem('account')
 const initialValues = {
     token: localStorage.getItem('token'),
-    account: account ? JSON.parse(account) : null,
+    account: JSON.parse(localStorage.getItem('account')) || null,
     listOfYears: [],
     selectedYearInfo: {}
 }
@@ -13,14 +13,23 @@ const initialValues = {
 const AppContextProvider = ({ children }) => {
     const [state, setState] = useState(initialValues)
 
-    const login = (token, account) => {
-        setState({
-            ...state,
-            token,
-            account
-        })
-        localStorage.setItem('token', token)
-        localStorage.setItem('account', JSON.stringify(account))
+    const loginHandler = async (url, options) => {
+        try {
+            const response = await fetch(url, options)
+            if (response.ok) {
+                const responseJSON = await response.json()
+                setState({
+                    ...state,
+                    token: responseJSON.token,
+                    account: responseJSON.account
+                })
+                localStorage.setItem('token', responseJSON.token)
+                localStorage.setItem('account', JSON.stringify(responseJSON.account))
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
     const logout = () => {
@@ -34,6 +43,7 @@ const AppContextProvider = ({ children }) => {
     }
 
     const updateInfo = (field, value) => {
+        console.log(field, value)
         setState({
             ...state,
             [field]: value
@@ -80,7 +90,34 @@ const AppContextProvider = ({ children }) => {
         }
     }
 
-    return <AppContext.Provider value={{ ...state, login, logout, addYear, updateInfo, getListOfYears }}>
+    const saveSelectedYear = async () => {
+        const { totalCOS, totalOH, ...selectedYearInfoToUpdate } = state.selectedYearInfo
+        const url = `${process.env.REACT_APP_API_BASE_URL}/year/${state.selectedYearInfo._id}`
+        try {
+            const response = await fetch(url, {
+                method: 'PATCH',
+                body: JSON.stringify(selectedYearInfoToUpdate),
+                headers: {
+                    'Authorization': state.token,
+                    'Content-Type': 'application/json'
+                }
+            })
+            getListOfYears()
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    return <AppContext.Provider value={
+        {
+            ...state,
+            loginHandler,
+            logout, addYear,
+            updateInfo,
+            getListOfYears,
+            saveSelectedYear
+        }}>
         {children}
     </AppContext.Provider>
 }

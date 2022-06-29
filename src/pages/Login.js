@@ -15,7 +15,7 @@ const initialValues = {
 const Login = () => {
     const navigate = useNavigate()
     const [values, setValues] = useState(initialValues)
-    const { login, token } = useAppContext()
+    const { loginHandler, token } = useAppContext()
 
     useEffect(() => {
         if (token) {
@@ -51,25 +51,15 @@ const Login = () => {
                 password: values.password
             })
         }
-
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                body,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            if (response.ok) {
-                const responseJSON = await response.json()
-                login(responseJSON.token, responseJSON.account)
-                navigate('/', { replace: true })
+        const options = {
+            method: 'POST',
+            body,
+            headers: {
+                'Content-Type': 'application/json'
             }
         }
-        catch (error) {
-            console.log(error)
-        }
-
+        loginHandler(url, options)
+        navigate('/', { replace: true })
     }
 
     return (

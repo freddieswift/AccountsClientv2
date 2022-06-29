@@ -1,0 +1,11 @@
+.yearInfoContainer {
+  background-color: #b4c5e4;
+  color: #050758;
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

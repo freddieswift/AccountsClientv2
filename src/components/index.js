@@ -6,6 +6,8 @@ import YearList from "./YearList";
 import YearCard from "./YearCard";
 import AddYear from "./AddYear";
 import YearTable from './YearTable'
+import YearInfoContainer from "./YearInfoContainer";
+import YearInfoGroup from "./YearInfoGroup";
 
 export {
     FormRow,
@@ -15,5 +17,7 @@ export {
     YearList,
     YearCard,
     AddYear,
-    YearTable
+    YearTable,
+    YearInfoContainer,
+    YearInfoGroup
 }
