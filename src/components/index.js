@@ -1,5 +1,4 @@
 import FormRow from "./FormRow";
-import Header from "./Header";
 import ProtectedRoute from "./ProtectedRoute";
 import DashboardNavigation from "./DashboardNavigation";
 import YearList from "./YearList";
@@ -8,10 +7,10 @@ import AddYear from "./AddYear";
 import YearTable from './YearTable'
 import YearInfoContainer from "./YearInfoContainer";
 import YearInfoGroup from "./YearInfoGroup";
+import CategoryContainer from "./CategoryContainer";
 
 export {
     FormRow,
-    Header,
     ProtectedRoute,
     DashboardNavigation,
     YearList,
@@ -19,5 +18,6 @@ export {
     AddYear,
     YearTable,
     YearInfoContainer,
-    YearInfoGroup
+    YearInfoGroup,
+    CategoryContainer
 }

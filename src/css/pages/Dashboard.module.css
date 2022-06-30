@@ -1,18 +1,5 @@
 .dashboard {
-  height: 100%;
-}
-
-.dashboardContent {
-  display: flex;
-  height: 100%;
-  margin-top: 5rem;
-}
-
-.tabOutlet {
-  flex-grow: 1;
-}
-
-.tabView {
-  flex-grow: 1;
-  margin-left: 8rem;
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  grid-template-rows: 100vh;
 }

@@ -1,17 +1,22 @@
 .dashboardNavigation {
   background-color: #090c9b;
-  height: 100%;
-  width: 8rem;
   text-align: center;
-  position: fixed;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.navigationGroup > h1 {
+  margin: 1rem 0;
 }
 
 .link {
-  color: #fff;
   display: block;
   text-decoration: none;
   font-size: 1.2rem;
   padding: 1rem;
+  color: #fff;
 }
 
 .activeLink {
@@ -19,4 +24,8 @@
   color: #050758;
   border-radius: 1rem;
   margin: 0 0.5rem;
+}
+
+.buttonContainer > button {
+  margin-bottom: 1rem;
 }

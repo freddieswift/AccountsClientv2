@@ -6,13 +6,8 @@ import classes from '../css/pages/Dashboard.module.css'
 const Dashboard = () => {
     return (
         <div className={classes.dashboard}>
-            <Header />
-            <div className={classes.dashboardContent}>
-                <DashboardNavigation />
-                <div className={classes.tabView}>
-                    <Outlet />
-                </div>
-            </div>
+            <DashboardNavigation />
+            <Outlet />
         </div>
     )
 }
