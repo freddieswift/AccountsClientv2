@@ -1,0 +1,9 @@
+.categoryCard {
+  width: 100%;
+  background-color: #cadcff;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}

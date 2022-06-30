@@ -13,7 +13,7 @@ const YearTable = () => {
     })
 
     const onClick = (e) => {
-
+        console.log(e)
         const selectedYearList = listOfYears.filter(year => {
             return year._id === e.target.parentElement.id
         })

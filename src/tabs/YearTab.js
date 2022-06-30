@@ -29,12 +29,15 @@ const YearTab = () => {
                     <div className={classes.categoryContainerGrid}>
                         <CategoryContainer
                             title="Cost Of Sale"
+                            name="COS"
                         />
                         <CategoryContainer
                             title="Overheads"
+                            name="OVERHEAD"
                         />
                         <CategoryContainer
                             title="Income"
+                            name="OI"
                         />
                     </div>
                 </React.Fragment>

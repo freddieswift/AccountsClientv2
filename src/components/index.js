@@ -8,6 +8,7 @@ import YearTable from './YearTable'
 import YearInfoContainer from "./YearInfoContainer";
 import YearInfoGroup from "./YearInfoGroup";
 import CategoryContainer from "./CategoryContainer";
+import CategoryCard from "./CategoryCard";
 
 export {
     FormRow,
@@ -19,5 +20,6 @@ export {
     YearTable,
     YearInfoContainer,
     YearInfoGroup,
-    CategoryContainer
+    CategoryContainer,
+    CategoryCard
 }
