@@ -9,3 +9,14 @@
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
+.circle {
+  background-color: red;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 0.6rem;
+}
+
+.activeCircle {
+  background-color: green;
+}

@@ -8,8 +8,6 @@ const YearTab = () => {
 
     const { selectedYearInfo, updateInfo, saveSelectedYear } = useAppContext()
 
-
-
     const saveSelectedYearHandler = () => {
         saveSelectedYear()
     }

@@ -43,7 +43,6 @@ const AppContextProvider = ({ children }) => {
     }
 
     const updateInfo = (field, value) => {
-        console.log(field, value)
         setState({
             ...state,
             [field]: value
@@ -102,7 +101,34 @@ const AppContextProvider = ({ children }) => {
                     'Content-Type': 'application/json'
                 }
             })
-            getListOfYears()
+            const responseJSON = await response.json()
+
+            if (response.ok) {
+                getListOfYears()
+            }
+            else {
+                throw new Error(responseJSON.error)
+            }
+        }
+        catch (error) {
+            getSelectedYearInfo()
+        }
+    }
+
+    const getSelectedYearInfo = async () => {
+        const url = `${process.env.REACT_APP_API_BASE_URL}/year/${state.selectedYearInfo._id}`
+        try {
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': state.token
+                }
+            })
+            const responseJSON = await response.json()
+            setState({
+                ...state,
+                selectedYearInfo: responseJSON
+            })
         }
         catch (error) {
             console.log(error)

@@ -12,6 +12,10 @@ const YearInfoContainer = () => {
         updateInfo('selectedYearInfo', { ...selectedYearInfo, name: date })
     }
 
+    const activeOnChange = () => {
+        updateInfo('selectedYearInfo', { ...selectedYearInfo, active: !selectedYearInfo.active })
+    }
+
     return (
         <div className={classes.yearInfoContainer}>
             <div>
@@ -41,6 +45,13 @@ const YearInfoContainer = () => {
                 name="predictedDozens"
                 text="Predicted Dozens"
             />
+            <div>
+                <h3>Active</h3>
+                <div
+                    className={`${classes.circle} ${selectedYearInfo.active ? classes.activeCircle : ''}`}
+                    onClick={activeOnChange}
+                />
+            </div>
         </div>
     )
 }

@@ -28,7 +28,7 @@ const YearTable = () => {
                 <td>£{year.turnover}</td>
                 <td>£{year.totalCOS}</td>
                 <td>£{year.totalOH}</td>
-                <td>Test</td>
+                <td>£{year.totalOI}</td>
                 <td className={classes.activeTableData}>
                     <div className={`${classes.circle} ${year.active ? classes.activeCircle : ''}`} />
                 </td>
