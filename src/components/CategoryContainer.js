@@ -8,8 +8,12 @@ const CategoryContainer = ({ name, title }) => {
 
     const { selectedYearInfo } = useAppContext()
 
-    const categoryCards = selectedYearInfo.categories.map(category => {
+    const filteredCategories = selectedYearInfo.categories.filter(category => {
+        return category.categoryType === name
+    })
 
+    const categoryCards = filteredCategories.map(category => {
+        return <CategoryCard name={category.name} value={category.value} />
     })
 
     return (
@@ -17,16 +21,12 @@ const CategoryContainer = ({ name, title }) => {
             <h3>{title}</h3>
             <Scrollbars autoHide>
                 <div className={classes.categoryCardScroll}>
-                    <CategoryCard />
-                    <CategoryCard />
-                    <CategoryCard />
-                    <CategoryCard />
-                    <CategoryCard />
-                    <CategoryCard />
-                    <CategoryCard />
-                    <CategoryCard />
+                    {categoryCards}
                 </div>
             </Scrollbars>
+            <button className={`btn ${classes.addCategoryButton}`}>
+                Add
+            </button>
         </div>
     )
 }

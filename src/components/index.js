@@ -1,7 +1,6 @@
 import FormRow from "./FormRow";
 import ProtectedRoute from "./ProtectedRoute";
 import DashboardNavigation from "./DashboardNavigation";
-import YearList from "./YearList";
 import YearCard from "./YearCard";
 import AddYear from "./AddYear";
 import YearTable from './YearTable'
@@ -14,7 +13,6 @@ export {
     FormRow,
     ProtectedRoute,
     DashboardNavigation,
-    YearList,
     YearCard,
     AddYear,
     YearTable,

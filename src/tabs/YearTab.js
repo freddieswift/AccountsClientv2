@@ -20,7 +20,7 @@ const YearTab = () => {
             {Object.keys(selectedYearInfo).length !== 0 &&
                 <React.Fragment>
                     <button
-                        className={`btn ${classes.addYearButton}`}
+                        className='btn'
                         onClick={saveSelectedYearHandler}
                     >
                         Save

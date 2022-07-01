@@ -4,8 +4,8 @@ import classes from '../css/components/CategoryCard.module.css'
 const CategoryCard = ({ name, value }) => {
     return (
         <div className={classes.categoryCard}>
-            <p>Title</p>
-            <p>£200</p>
+            <p>{name}</p>
+            <p>{value}</p>
         </div>
     )
 }

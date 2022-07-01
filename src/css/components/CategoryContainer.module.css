@@ -18,3 +18,12 @@
 .categoryContainer > h3 {
   margin-bottom: 1rem;
 }
+
+.addCategoryButton {
+  background-color: #cadcff;
+  width: 100%;
+}
+
+.addCategoryButton:hover {
+  background-color: #f2f7ff;
+}
