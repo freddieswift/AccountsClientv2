@@ -1,0 +1,13 @@
+.addCategory {
+  width: 10rem;
+  height: 10rem;
+  background-color: #3d52d5;
+  color: #fbfff1;
+  position: fixed;
+  width: 25%;
+  left: 40%;
+  top: 20%;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 1rem;
+}

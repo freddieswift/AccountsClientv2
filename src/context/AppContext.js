@@ -89,6 +89,19 @@ const AppContextProvider = ({ children }) => {
         }
     }
 
+    const addCategory = async (category) => {
+        setState({
+            ...state,
+            selectedYearInfo: {
+                ...state.selectedYearInfo, categories: [
+                    ...state.selectedYearInfo.categories,
+                    category
+                ]
+            }
+        })
+        saveSelectedYear()
+    }
+
     const saveSelectedYear = async () => {
         const { totalCOS, totalOH, ...selectedYearInfoToUpdate } = state.selectedYearInfo
         const url = `${process.env.REACT_APP_API_BASE_URL}/year/${state.selectedYearInfo._id}`
@@ -102,6 +115,7 @@ const AppContextProvider = ({ children }) => {
                 }
             })
             const responseJSON = await response.json()
+            console.log(responseJSON)
 
             if (response.ok) {
                 getListOfYears()
@@ -142,7 +156,8 @@ const AppContextProvider = ({ children }) => {
             logout, addYear,
             updateInfo,
             getListOfYears,
-            saveSelectedYear
+            saveSelectedYear,
+            addCategory
         }}>
         {children}
     </AppContext.Provider>

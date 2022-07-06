@@ -6,7 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 const YearTab = () => {
 
-    const { selectedYearInfo, updateInfo, saveSelectedYear } = useAppContext()
+    const { selectedYearInfo, saveSelectedYear } = useAppContext()
 
     const saveSelectedYearHandler = () => {
         saveSelectedYear()
@@ -28,16 +28,19 @@ const YearTab = () => {
                     <YearInfoContainer />
                     <div className={classes.categoryContainerGrid}>
                         <CategoryContainer
+                            saveSelectedYearHandler={saveSelectedYearHandler}
                             title="Cost Of Sale"
-                            name="COS"
+                            categoryType="COS"
                         />
                         <CategoryContainer
+                            saveSelectedYearHandler={saveSelectedYearHandler}
                             title="Overheads"
-                            name="OVERHEAD"
+                            categoryType="OVERHEAD"
                         />
                         <CategoryContainer
+                            saveSelectedYearHandler={saveSelectedYearHandler}
                             title="Income"
-                            name="OI"
+                            categoryType="OI"
                         />
                     </div>
                 </React.Fragment>
