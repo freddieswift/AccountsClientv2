@@ -115,15 +115,6 @@ const AppContextProvider = ({ children }) => {
     }
 
     const addCategory = async (category) => {
-        // setState({
-        //     ...state,
-        //     selectedYearInfo: {
-        //         ...state.selectedYearInfo, categories: [
-        //             ...state.selectedYearInfo.categories,
-        //             category
-        //         ]
-        //     }
-        // })
         const dataToUpdate = {
             ...state.selectedYearInfo, categories: [
                 ...state.selectedYearInfo.categories,
@@ -146,8 +137,9 @@ const AppContextProvider = ({ children }) => {
                     'Content-Type': 'application/json'
                 }
             })
+
             const responseJSON = await response.json()
-            console.log(responseJSON)
+
             if (response.ok) {
                 setState({
                     ...state,

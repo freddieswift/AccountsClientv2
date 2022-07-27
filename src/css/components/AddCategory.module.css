@@ -1,6 +1,6 @@
 .addCategory {
   width: 10rem;
-  height: 10rem;
+  height: 16rem;
   background-color: #3d52d5;
   color: #fbfff1;
   position: fixed;
@@ -11,4 +11,23 @@
   padding: 1rem;
   border-radius: 1rem;
   z-index: 1;
+}
+
+.label {
+  display: block;
+}
+
+.input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.12rem;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 10rem;
+  margin: 1rem auto;
 }
