@@ -49,8 +49,33 @@ const AppContextProvider = ({ children }) => {
         })
     }
 
+    const makeRequest = async (requestOptions, url) => {
+        try {
+            const response = await fetch(url, requestOptions)
+            const responseJSON = await response.json()
+            if (!response.ok) {
+                throw new Error(responseJSON.error)
+            }
+            return responseJSON
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
     const getListOfYears = async () => {
         const url = process.env.REACT_APP_API_BASE_URL + '/year'
+        // const requestOptions = {
+        //     method: 'GET',
+        //     headers: {
+        //         'Authorization': state.token
+        //     }
+        // }
+        // setState({
+        //     ...state,
+        //     listOfYears: await makeRequest(url, requestOptions)
+        // })
+
         try {
             const response = await fetch(url, {
                 method: 'GET',
@@ -90,20 +115,27 @@ const AppContextProvider = ({ children }) => {
     }
 
     const addCategory = async (category) => {
-        setState({
-            ...state,
-            selectedYearInfo: {
-                ...state.selectedYearInfo, categories: [
-                    ...state.selectedYearInfo.categories,
-                    category
-                ]
-            }
-        })
-        saveSelectedYear()
+        // setState({
+        //     ...state,
+        //     selectedYearInfo: {
+        //         ...state.selectedYearInfo, categories: [
+        //             ...state.selectedYearInfo.categories,
+        //             category
+        //         ]
+        //     }
+        // })
+        const dataToUpdate = {
+            ...state.selectedYearInfo, categories: [
+                ...state.selectedYearInfo.categories,
+                category
+            ]
+        }
+        saveSelectedYear(dataToUpdate)
     }
 
-    const saveSelectedYear = async () => {
-        const { totalCOS, totalOH, ...selectedYearInfoToUpdate } = state.selectedYearInfo
+    const saveSelectedYear = async (dataToUpdate = state.selectedYearInfo) => {
+
+        const { totalCOS, totalOH, ...selectedYearInfoToUpdate } = dataToUpdate
         const url = `${process.env.REACT_APP_API_BASE_URL}/year/${state.selectedYearInfo._id}`
         try {
             const response = await fetch(url, {
@@ -116,9 +148,12 @@ const AppContextProvider = ({ children }) => {
             })
             const responseJSON = await response.json()
             console.log(responseJSON)
-
             if (response.ok) {
-                getListOfYears()
+                setState({
+                    ...state,
+                    selectedYearInfo: responseJSON
+                })
+                //getListOfYears()
             }
             else {
                 throw new Error(responseJSON.error)

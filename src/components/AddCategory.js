@@ -14,15 +14,6 @@ const AddCategory = ({ toggleAddCategory, categoryType }) => {
 
     const addCategoryHandler = () => {
         if (categoryName) {
-            // updateInfo('selectedYearInfo',
-            //     {
-            //         ...selectedYearInfo, categories: [
-            //             ...selectedYearInfo.categories,
-            //             { name: categoryName, categoryType }
-            //         ]
-            //     }
-            // )
-            // saveSelectedYear()
             addCategory({ name: categoryName, categoryType })
             toggleAddCategory()
         }
@@ -31,6 +22,7 @@ const AddCategory = ({ toggleAddCategory, categoryType }) => {
     return (
         <div className={classes.addCategory}>
             <h3>Add Category</h3>
+            <label>Name</label>
             <input
                 value={categoryName}
                 onChange={categoryNameHandler}
