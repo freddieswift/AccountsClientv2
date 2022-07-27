@@ -29,6 +29,7 @@ const CategoryContainer = ({ categoryType, title, saveSelectedYearHandler }) => 
     return (
         <div className={classes.categoryContainer}>
             <h3>{title}</h3>
+            <p>Total: £{selectedYearInfo[`total${categoryType}`]}</p>
             <Scrollbars autoHide>
                 <div className={classes.categoryCardScroll}>
                     {categoryCards}

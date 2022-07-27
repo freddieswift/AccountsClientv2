@@ -65,16 +65,6 @@ const AppContextProvider = ({ children }) => {
 
     const getListOfYears = async () => {
         const url = process.env.REACT_APP_API_BASE_URL + '/year'
-        // const requestOptions = {
-        //     method: 'GET',
-        //     headers: {
-        //         'Authorization': state.token
-        //     }
-        // }
-        // setState({
-        //     ...state,
-        //     listOfYears: await makeRequest(url, requestOptions)
-        // })
 
         try {
             const response = await fetch(url, {

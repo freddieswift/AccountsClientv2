@@ -35,7 +35,7 @@ const YearTab = () => {
                         <CategoryContainer
                             saveSelectedYearHandler={saveSelectedYearHandler}
                             title="Overheads"
-                            categoryType="OVERHEAD"
+                            categoryType="OH"
                         />
                         <CategoryContainer
                             saveSelectedYearHandler={saveSelectedYearHandler}
