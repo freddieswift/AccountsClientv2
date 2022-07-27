@@ -15,7 +15,7 @@ const YearInfoGroup = ({ name, text, readOnly }) => {
         value = selectedYearInfo.turnover - selectedYearInfo.totalCOS
     }
     else if (name === 'netProfit') {
-        value = selectedYearInfo.turnover - selectedYearInfo.totalCOS - selectedYearInfo.totalOH
+        value = selectedYearInfo.turnover - selectedYearInfo.totalCOS - selectedYearInfo.totalOH + selectedYearInfo.totalOI
     }
     else {
         value = selectedYearInfo[name]

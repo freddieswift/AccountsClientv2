@@ -32,13 +32,13 @@ const YearInfoContainer = () => {
                 text="Turnover"
             />
             <YearInfoGroup
-                name="netProfit"
-                text="Net Profit"
+                name="grossProfit"
+                text="Gross Profit"
                 readOnly={true}
             />
             <YearInfoGroup
-                name="grossProfit"
-                text="Gross Profit"
+                name="netProfit"
+                text="Net Profit"
                 readOnly={true}
             />
             <YearInfoGroup
