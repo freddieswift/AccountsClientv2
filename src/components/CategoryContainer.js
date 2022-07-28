@@ -23,6 +23,7 @@ const CategoryContainer = ({ categoryType, title, saveSelectedYearHandler }) => 
             key={category._id}
             name={category.name}
             value={category.value}
+            total={selectedYearInfo[`total${category.categoryType}`]}
         />
     })
 
