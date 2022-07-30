@@ -8,8 +8,6 @@ const YearInfoContainer = () => {
 
     const { selectedYearInfo, updateInfo } = useAppContext()
 
-    console.log(selectedYearInfo)
-
     const dateOnChange = date => {
         updateInfo('selectedYearInfo', { ...selectedYearInfo, name: date })
     }
