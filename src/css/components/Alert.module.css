@@ -1,9 +1,20 @@
-.errorModal {
-  background-color: rgb(255, 0, 0);
+.alert {
   position: fixed;
-  width: 10%;
-  left: 45%;
+  width: 20%;
+  left: 40%;
   top: 20%;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 1rem;
+  z-index: 1;
+}
+
+.alert-success {
+  background-color: rgb(163, 255, 88);
+}
+
+.alert-danger {
+  background-color: rgb(255, 88, 88);
 }
 
 .hidden {
