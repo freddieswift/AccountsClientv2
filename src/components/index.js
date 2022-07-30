@@ -9,6 +9,7 @@ import YearInfoGroup from "./YearInfoGroup";
 import CategoryContainer from "./CategoryContainer";
 import CategoryCard from "./CategoryCard";
 import AddCategory from "./AddCategory";
+import Alert from "./Alert";
 
 export {
     FormRow,
@@ -21,5 +22,6 @@ export {
     YearInfoGroup,
     CategoryContainer,
     CategoryCard,
-    AddCategory
+    AddCategory,
+    Alert
 }

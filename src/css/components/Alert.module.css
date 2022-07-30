@@ -1,0 +1,11 @@
+.errorModal {
+  background-color: rgb(255, 0, 0);
+  position: fixed;
+  width: 10%;
+  left: 45%;
+  top: 20%;
+}
+
+.hidden {
+  display: none;
+}

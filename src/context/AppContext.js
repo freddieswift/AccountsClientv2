@@ -7,7 +7,10 @@ const initialValues = {
     token: localStorage.getItem('token'),
     account: JSON.parse(localStorage.getItem('account')) || null,
     listOfYears: [],
-    selectedYearInfo: {}
+    selectedYearInfo: {},
+    displayAlert: false,
+    alertType: '',
+    alertMessage: ''
 }
 
 const AppContextProvider = ({ children }) => {
@@ -16,8 +19,8 @@ const AppContextProvider = ({ children }) => {
     const loginHandler = async (url, options) => {
         try {
             const response = await fetch(url, options)
+            const responseJSON = await response.json()
             if (response.ok) {
-                const responseJSON = await response.json()
                 setState({
                     ...state,
                     token: responseJSON.token,
@@ -25,6 +28,9 @@ const AppContextProvider = ({ children }) => {
                 })
                 localStorage.setItem('token', responseJSON.token)
                 localStorage.setItem('account', JSON.stringify(responseJSON.account))
+            }
+            else {
+                throw new Error(responseJSON.error)
             }
         }
         catch (error) {
@@ -49,18 +55,25 @@ const AppContextProvider = ({ children }) => {
         })
     }
 
-    const makeRequest = async (requestOptions, url) => {
-        try {
-            const response = await fetch(url, requestOptions)
-            const responseJSON = await response.json()
-            if (!response.ok) {
-                throw new Error(responseJSON.error)
-            }
-            return responseJSON
-        }
-        catch (error) {
-            console.log(error)
-        }
+    const displayAlertHandler = (alertMessage, alertType) => {
+        setState({
+            ...state,
+            alertMessage,
+            alertType,
+            displayAlert: true
+        })
+        hideAlertHandler()
+    }
+
+    const hideAlertHandler = () => {
+        return setTimeout(() => {
+            setState({
+                ...state,
+                alertText: '',
+                alertType: ''
+            })
+        }, 3000)
+
     }
 
     const getListOfYears = async () => {
@@ -135,14 +148,16 @@ const AppContextProvider = ({ children }) => {
                     ...state,
                     selectedYearInfo: responseJSON
                 })
-                //getListOfYears()
+                displayAlertHandler("Save Successful", 'success')
             }
             else {
                 throw new Error(responseJSON.error)
             }
         }
         catch (error) {
-            getSelectedYearInfo()
+            displayAlertHandler(error.message, 'success')
+            //getSelectedYearInfo()
+            //getSelectedYearInfo()
         }
     }
 
@@ -170,11 +185,13 @@ const AppContextProvider = ({ children }) => {
         {
             ...state,
             loginHandler,
-            logout, addYear,
+            logout,
+            addYear,
             updateInfo,
             getListOfYears,
             saveSelectedYear,
-            addCategory
+            addCategory,
+            displayAlertHandler
         }}>
         {children}
     </AppContext.Provider>
