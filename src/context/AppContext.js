@@ -76,44 +76,50 @@ const AppContextProvider = ({ children }) => {
 
     }
 
-    const getListOfYears = async () => {
-        const url = process.env.REACT_APP_API_BASE_URL + '/year'
+    const authFetch = async (endpoint, config) => {
+        const url = process.env.REACT_APP_API_BASE_URL + endpoint
+        config.headers = {
+            ...config.headers,
+            'Authorization': state.token
+        }
+        const response = await fetch(url, config)
+        const responseJSON = await response.json()
+        if (!response.ok) {
+            throw new Error(responseJSON.error)
+        }
+        return responseJSON
+    }
 
+    const getListOfYears = async () => {
         try {
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Authorization': state.token
-                }
+            const listOfYears = await authFetch('/year', {
+                method: 'GET'
             })
-            const responseJSON = await response.json()
             setState({
                 ...state,
-                listOfYears: responseJSON
+                listOfYears
             })
         }
         catch (error) {
-            console.log(error)
+            displayAlertHandler(error.message, 'danger')
         }
     }
 
     const addYear = async (yearName) => {
-        const url = process.env.REACT_APP_API_BASE_URL + '/year'
         try {
-            const response = await fetch(url, {
+            await authFetch('/year', {
                 method: 'POST',
                 body: JSON.stringify({
                     "name": yearName
                 }),
                 headers: {
-                    'Authorization': state.token,
                     'Content-Type': 'application/json'
                 }
             })
             getListOfYears()
         }
         catch (error) {
-            console.log(error)
+            displayAlertHandler(error.message, 'danger')
         }
     }
 
@@ -128,36 +134,23 @@ const AppContextProvider = ({ children }) => {
     }
 
     const saveSelectedYear = async (dataToUpdate = state.selectedYearInfo) => {
-
         const { totalCOS, totalOH, ...selectedYearInfoToUpdate } = dataToUpdate
-        const url = `${process.env.REACT_APP_API_BASE_URL}/year/${state.selectedYearInfo._id}`
         try {
-            const response = await fetch(url, {
+            const selectedYearInfo = await authFetch(`/year/${state.selectedYearInfo._id}`, {
                 method: 'PATCH',
                 body: JSON.stringify(selectedYearInfoToUpdate),
                 headers: {
-                    'Authorization': state.token,
                     'Content-Type': 'application/json'
                 }
             })
-
-            const responseJSON = await response.json()
-
-            if (response.ok) {
-                setState({
-                    ...state,
-                    selectedYearInfo: responseJSON
-                })
-                displayAlertHandler("Save Successful", 'success')
-            }
-            else {
-                throw new Error(responseJSON.error)
-            }
+            setState({
+                ...state,
+                selectedYearInfo
+            })
+            displayAlertHandler("Save Successful", 'success')
         }
         catch (error) {
-            displayAlertHandler(error.message, 'success')
-            //getSelectedYearInfo()
-            //getSelectedYearInfo()
+            displayAlertHandler(error.message, 'danger')
         }
     }
 
