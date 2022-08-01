@@ -136,7 +136,6 @@ const AppContextProvider = ({ children }) => {
 
     const saveSelectedYear = async (dataToUpdate = state.selectedYearInfo) => {
         const { totalCOS, totalOH, totalOI, ...selectedYearInfoToUpdate } = dataToUpdate
-        console.log("🚀 ~ file: AppContext.js ~ line 138 ~ saveSelectedYear ~ dataToUpdate", dataToUpdate)
         try {
             const response = await authFetch(`/year/${state.selectedYearInfo._id}`, {
                 method: 'PATCH',
@@ -145,7 +144,6 @@ const AppContextProvider = ({ children }) => {
                     'Content-Type': 'application/json'
                 }
             })
-            console.log("🚀 ~ file: AppContext.js ~ line 147 ~ saveSelectedYear ~ response", response)
             setState({
                 ...state,
                 selectedYearInfo: response
@@ -155,6 +153,21 @@ const AppContextProvider = ({ children }) => {
         catch (error) {
             displayAlertHandler(error.message, 'danger')
         }
+    }
+
+    const deleteSelectedYear = async () => {
+        await authFetch(`/year/${state.selectedYearInfo._id}`, {
+            method: 'DELETE'
+        })
+        // try {
+        //     await authFetch(`/year/${state.selectedYearInfo._id}`, {
+        //         method: 'DELETE'
+        //     })
+        //     displayAlertHandler("Year deleted", 'success')
+        // }
+        // catch (error) {
+        //     displayAlertHandler(error.message, 'danger')
+        // }
     }
 
     const getSelectedYearInfo = async () => {
@@ -186,6 +199,7 @@ const AppContextProvider = ({ children }) => {
             updateInfo,
             getListOfYears,
             saveSelectedYear,
+            deleteSelectedYear,
             addCategory,
             displayAlertHandler
         }}>

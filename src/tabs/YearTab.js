@@ -3,13 +3,27 @@ import { useAppContext } from '../context/AppContext'
 import classes from '../css/tabs/YearTab.module.css'
 import { YearInfoContainer, CategoryContainer, TabButtonContainer } from '../components'
 import 'react-datepicker/dist/react-datepicker.css'
+import { useNavigate } from 'react-router-dom'
 
 const YearTab = () => {
 
-    const { selectedYearInfo, saveSelectedYear } = useAppContext()
+    const navigate = useNavigate()
+
+    const { selectedYearInfo, saveSelectedYear, deleteSelectedYear, displayAlertHandler } = useAppContext()
 
     const saveSelectedYearHandler = () => {
         saveSelectedYear()
+    }
+
+    const deleteSelectedYearHandler = async () => {
+        try {
+            await deleteSelectedYear()
+            displayAlertHandler("Year deleted", 'success')
+            navigate('/', { replace: true })
+        }
+        catch (error) {
+            displayAlertHandler(error.message, 'danger')
+        }
     }
 
     return (
@@ -28,7 +42,7 @@ const YearTab = () => {
                         </button>
                         <button
                             className='btn'
-                            onClick={saveSelectedYearHandler}
+                            onClick={deleteSelectedYearHandler}
                         >
                             Delete
                         </button>
