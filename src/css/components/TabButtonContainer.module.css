@@ -1,0 +1,8 @@
+.tabButtonContainer {
+  width: 80%;
+  margin: 0.5rem auto;
+}
+
+.tabButtonContainer > button {
+  margin-right: 0.5rem;
+}

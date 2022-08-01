@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAppContext } from '../context/AppContext'
 import classes from '../css/tabs/YearTab.module.css'
-import { YearInfoContainer, CategoryContainer } from '../components'
+import { YearInfoContainer, CategoryContainer, TabButtonContainer } from '../components'
 import 'react-datepicker/dist/react-datepicker.css'
 
 const YearTab = () => {
@@ -19,12 +19,20 @@ const YearTab = () => {
             }
             {Object.keys(selectedYearInfo).length !== 0 &&
                 <React.Fragment>
-                    <button
-                        className='btn'
-                        onClick={saveSelectedYearHandler}
-                    >
-                        Save
-                    </button>
+                    <TabButtonContainer>
+                        <button
+                            className='btn'
+                            onClick={saveSelectedYearHandler}
+                        >
+                            Save
+                        </button>
+                        <button
+                            className='btn'
+                            onClick={saveSelectedYearHandler}
+                        >
+                            Delete
+                        </button>
+                    </TabButtonContainer>
                     <YearInfoContainer />
                     <div className={classes.categoryContainerGrid}>
                         <CategoryContainer

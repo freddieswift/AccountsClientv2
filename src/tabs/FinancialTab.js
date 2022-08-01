@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import classes from '../css/tabs/FinancialTab.module.css'
 import { useAppContext } from '../context/AppContext'
-import { AddYear, YearTable } from '../components'
+import { AddYear, YearTable, TabButtonContainer } from '../components'
 
 const FinancialTab = () => {
     const { getListOfYears } = useAppContext()
@@ -19,12 +19,14 @@ const FinancialTab = () => {
     return (
         <div className={classes.financialTab}>
             {toggleAddYear && <AddYear toggleAddYearHandler={toggleAddYearHandler} />}
-            <button
-                className={`btn ${classes.addYearButton}`}
-                onClick={toggleAddYearHandler}
-            >
-                Add Year
-            </button>
+            <TabButtonContainer>
+                <button
+                    className={`btn ${classes.addYearButton}`}
+                    onClick={toggleAddYearHandler}
+                >
+                    Add Year
+                </button>
+            </TabButtonContainer>
             <YearTable />
         </div>
     )

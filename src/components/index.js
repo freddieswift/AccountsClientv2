@@ -10,6 +10,7 @@ import CategoryContainer from "./CategoryContainer";
 import CategoryCard from "./CategoryCard";
 import AddCategory from "./AddCategory";
 import Alert from "./Alert";
+import TabButtonContainer from "./TabButtonContainer";
 
 export {
     FormRow,
@@ -23,5 +24,6 @@ export {
     CategoryContainer,
     CategoryCard,
     AddCategory,
-    Alert
+    Alert,
+    TabButtonContainer
 }
