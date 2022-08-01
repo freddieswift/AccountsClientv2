@@ -56,22 +56,23 @@ const AppContextProvider = ({ children }) => {
     }
 
     const displayAlertHandler = (alertMessage, alertType) => {
-        setState({
+        setState(state => ({
             ...state,
             alertMessage,
             alertType,
             displayAlert: true
-        })
+        }))
         hideAlertHandler()
     }
 
     const hideAlertHandler = () => {
         return setTimeout(() => {
-            setState({
+            setState(state => ({
                 ...state,
                 alertText: '',
-                alertType: ''
-            })
+                alertType: '',
+                displayAlert: false
+            }))
         }, 3000)
 
     }
@@ -134,18 +135,20 @@ const AppContextProvider = ({ children }) => {
     }
 
     const saveSelectedYear = async (dataToUpdate = state.selectedYearInfo) => {
-        const { totalCOS, totalOH, ...selectedYearInfoToUpdate } = dataToUpdate
+        const { totalCOS, totalOH, totalOI, ...selectedYearInfoToUpdate } = dataToUpdate
+        console.log("🚀 ~ file: AppContext.js ~ line 138 ~ saveSelectedYear ~ dataToUpdate", dataToUpdate)
         try {
-            const selectedYearInfo = await authFetch(`/year/${state.selectedYearInfo._id}`, {
+            const response = await authFetch(`/year/${state.selectedYearInfo._id}`, {
                 method: 'PATCH',
                 body: JSON.stringify(selectedYearInfoToUpdate),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
+            console.log("🚀 ~ file: AppContext.js ~ line 147 ~ saveSelectedYear ~ response", response)
             setState({
                 ...state,
-                selectedYearInfo
+                selectedYearInfo: response
             })
             displayAlertHandler("Save Successful", 'success')
         }
