@@ -10,7 +10,8 @@ const initialValues = {
     selectedYearInfo: {},
     displayAlert: false,
     alertType: '',
-    alertMessage: ''
+    alertMessage: '',
+    activeYear: {}
 }
 
 const AppContextProvider = ({ children }) => {
@@ -186,15 +187,22 @@ const AppContextProvider = ({ children }) => {
         await authFetch(`/year/${state.selectedYearInfo._id}`, {
             method: 'DELETE'
         })
-        // try {
-        //     await authFetch(`/year/${state.selectedYearInfo._id}`, {
-        //         method: 'DELETE'
-        //     })
-        //     displayAlertHandler("Year deleted", 'success')
-        // }
-        // catch (error) {
-        //     displayAlertHandler(error.message, 'danger')
-        // }
+    }
+
+    const getActiveYear = async () => {
+        try {
+            const activeYear = await authFetch('/year/active', {
+                method: 'GET'
+            })
+            console.log(activeYear)
+            setState({
+                ...state,
+                activeYear
+            })
+        }
+        catch (error) {
+
+        }
     }
 
     const getSelectedYearInfo = async () => {
@@ -230,7 +238,8 @@ const AppContextProvider = ({ children }) => {
             addCategory,
             editCategory,
             deleteCategory,
-            displayAlertHandler
+            displayAlertHandler,
+            getActiveYear
         }}>
         {children}
     </AppContext.Provider>
