@@ -1,13 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classes from '../css/components/CategoryCard.module.css'
+import { AddEditCategory } from '../components'
 
-const CategoryCard = ({ name, value, total }) => {
+const CategoryCard = ({ name, value, total, id, categoryType }) => {
+
+    const [toggleEditCategory, setToggleEditCategory] = useState(false)
+
+    const toggleEditCategoryHandler = () => {
+        setToggleEditCategory(!toggleEditCategory)
+    }
+
     return (
-        <div className={classes.categoryCard}>
-            <p>{name}</p>
-            <p>{(100 * value) / total ? ((100 * value) / total).toFixed(2) : 0}%</p>
-            <p>£{value}</p>
-        </div>
+        <React.Fragment>
+            {toggleEditCategory
+                &&
+                <AddEditCategory
+                    categoryNameProp={name}
+                    categoryValueProp={value}
+                    edit={true}
+                    categoryID={id}
+                    toggleAddEditCategory={toggleEditCategoryHandler}
+                    categoryType={categoryType}
+                />
+            }
+            <div className={classes.categoryCard} onClick={toggleEditCategoryHandler}>
+
+                <p>{name}</p>
+                <div className={classes.valueContainer}>
+                    <p>{(100 * value) / total ? ((100 * value) / total).toFixed(2) : 0}%</p>
+                    <p>£{value}</p>
+                </div>
+            </div>
+        </React.Fragment>
     )
 }
 

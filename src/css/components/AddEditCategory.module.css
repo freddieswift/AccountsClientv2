@@ -28,6 +28,10 @@
 .buttonContainer {
   display: flex;
   justify-content: space-between;
-  width: 10rem;
+  width: 15rem;
   margin: 1rem auto;
+}
+
+.buttonContainerAdd {
+  width: 10rem;
 }

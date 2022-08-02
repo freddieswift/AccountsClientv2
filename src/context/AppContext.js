@@ -134,6 +134,33 @@ const AppContextProvider = ({ children }) => {
         saveSelectedYear(dataToUpdate)
     }
 
+    const editCategory = (categoryToUpdate) => {
+        const selectedYearInfoCategories = state.selectedYearInfo.categories
+        const updatedCategories = selectedYearInfoCategories.map(category => {
+            if (category._id === categoryToUpdate.id) {
+                return categoryToUpdate
+            }
+            return category
+        })
+        const dataToUpdate = {
+            ...state.selectedYearInfo,
+            categories: updatedCategories
+        }
+        saveSelectedYear(dataToUpdate)
+    }
+
+    const deleteCategory = (categoryID) => {
+        const selectedYearInfoCategories = state.selectedYearInfo.categories
+        const updatedCategories = selectedYearInfoCategories.filter(category => {
+            return category._id !== categoryID
+        })
+        const dataToUpdate = {
+            ...state.selectedYearInfo,
+            categories: updatedCategories
+        }
+        saveSelectedYear(dataToUpdate)
+    }
+
     const saveSelectedYear = async (dataToUpdate = state.selectedYearInfo) => {
         const { totalCOS, totalOH, totalOI, ...selectedYearInfoToUpdate } = dataToUpdate
         try {
@@ -201,6 +228,8 @@ const AppContextProvider = ({ children }) => {
             saveSelectedYear,
             deleteSelectedYear,
             addCategory,
+            editCategory,
+            deleteCategory,
             displayAlertHandler
         }}>
         {children}

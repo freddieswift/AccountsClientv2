@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import classes from '../css/components/CategoryContainer.module.css'
-import { CategoryCard, AddCategory } from '../components'
+import { CategoryCard, AddEditCategory } from '../components'
 import { Scrollbars } from 'react-custom-scrollbars';
 import { useAppContext } from '../context/AppContext';
 
@@ -21,9 +21,11 @@ const CategoryContainer = ({ categoryType, title, saveSelectedYearHandler }) => 
     const categoryCards = filteredCategories.map(category => {
         return <CategoryCard
             key={category._id}
+            id={category._id}
             name={category.name}
             value={category.value}
             total={selectedYearInfo[`total${category.categoryType}`]}
+            categoryType={categoryType}
         />
     })
 
@@ -42,8 +44,8 @@ const CategoryContainer = ({ categoryType, title, saveSelectedYearHandler }) => 
             >
                 Add
             </button>
-            {toggleAddCategory && <AddCategory
-                toggleAddCategory={toggleAddCategoryHandler}
+            {toggleAddCategory && <AddEditCategory
+                toggleAddEditCategory={toggleAddCategoryHandler}
                 categoryType={categoryType}
             />}
         </div>

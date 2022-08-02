@@ -1,0 +1,12 @@
+.categoryInfoContainer {
+  background-color: red;
+  position: fixed;
+  width: 30%;
+  top: 20%;
+  left: 35%;
+  background-color: #3d52d5;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: #fbfff1;
+}

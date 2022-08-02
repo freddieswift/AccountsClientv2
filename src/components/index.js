@@ -8,9 +8,10 @@ import YearInfoContainer from "./YearInfoContainer";
 import YearInfoGroup from "./YearInfoGroup";
 import CategoryContainer from "./CategoryContainer";
 import CategoryCard from "./CategoryCard";
-import AddCategory from "./AddCategory";
+import AddEditCategory from "./AddEditCategory";
 import Alert from "./Alert";
 import TabButtonContainer from "./TabButtonContainer";
+import CategoryInfo from "./CategoryInfo";
 
 export {
     FormRow,
@@ -23,7 +24,8 @@ export {
     YearInfoGroup,
     CategoryContainer,
     CategoryCard,
-    AddCategory,
+    AddEditCategory,
     Alert,
-    TabButtonContainer
+    TabButtonContainer,
+    CategoryInfo
 }

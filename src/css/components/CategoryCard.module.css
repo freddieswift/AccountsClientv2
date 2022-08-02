@@ -2,8 +2,17 @@
   width: 100%;
   background-color: #cadcff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
   margin-bottom: 1rem;
+  /* display: flex;
+  justify-content: space-between; */
+  text-align: center;
+}
+
+.valueContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin-top: 0.5rem;
+  border-top: 0.1px #eaf0fc solid;
+  padding-top: 0.5rem;
 }
