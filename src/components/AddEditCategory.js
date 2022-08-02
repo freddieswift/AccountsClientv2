@@ -60,7 +60,9 @@ const AddEditCategory = ({ toggleAddEditCategory, categoryType, edit, categoryNa
             {edit &&
                 <div className={classes.buttonContainer}>
                     <button className='btn' onClick={editCategoryHandler}>Save</button>
-                    <button className='btn' onClick={deleteCategoryHandler}>Delete</button>
+                    {categoryName !== 'Yarn' && categoryName !== "Dyeing" &&
+                        <button className='btn' onClick={deleteCategoryHandler}>Delete</button>
+                    }
                     <button className='btn' onClick={toggleAddEditCategory}>Close</button>
                 </div>
             }
