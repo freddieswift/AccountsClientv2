@@ -34,9 +34,9 @@ const YearInfoGroup = ({ name, text, readOnly }) => {
             {(name === 'grossProfit' || name === 'netProfit') &&
                 <input
                     value={name === 'grossProfit' ?
-                        (100 - ((100 * selectedYearInfo.totalCOS) / selectedYearInfo.turnover)).toFixed(2) + '%'
+                        (100 - (100 * selectedYearInfo.totalCOS) / selectedYearInfo.turnover).toFixed(2) + '%'
                         :
-                        ((100 * selectedYearInfo.totalOH) / selectedYearInfo.turnover).toFixed(2) + '%'
+                        (100 - (100 * (selectedYearInfo.totalOH + selectedYearInfo.totalCOS - selectedYearInfo.totalOI)) / selectedYearInfo.turnover).toFixed(2) + '%'
                     }
                     readOnly={true}
                 />
