@@ -11,7 +11,8 @@ const initialValues = {
     displayAlert: false,
     alertType: '',
     alertMessage: '',
-    activeYear: {}
+    activeYear: {},
+    listOfSocks: []
 }
 
 const AppContextProvider = ({ children }) => {
@@ -194,14 +195,28 @@ const AppContextProvider = ({ children }) => {
             const activeYear = await authFetch('/year/active', {
                 method: 'GET'
             })
-            console.log(activeYear)
             setState({
                 ...state,
                 activeYear
             })
         }
         catch (error) {
+            displayAlertHandler(error.message, 'danger')
+        }
+    }
 
+    const getSocks = async () => {
+        try {
+            const response = await authFetch('/sock', {
+                method: 'GET'
+            })
+            setState({
+                ...state,
+                listOfSocks: response.socks
+            })
+        }
+        catch (error) {
+            displayAlertHandler(error.message, 'danger')
         }
     }
 
@@ -239,7 +254,8 @@ const AppContextProvider = ({ children }) => {
             editCategory,
             deleteCategory,
             displayAlertHandler,
-            getActiveYear
+            getActiveYear,
+            getSocks
         }}>
         {children}
     </AppContext.Provider>

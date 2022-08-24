@@ -1,0 +1,8 @@
+.sockCard {
+  background-color: #b4c5e4;
+  color: #050758;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}

@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 import { useAppContext } from '../context/AppContext'
-import { TabButtonContainer } from '../components'
+import { SockCardGrid, TabButtonContainer } from '../components'
+
 
 const SockTab = () => {
-    const { getActiveYear } = useAppContext()
+    const { getActiveYear, getSocks } = useAppContext()
 
     useEffect(() => {
         getActiveYear()
+        getSocks()
     }, [])
 
     return (
@@ -14,6 +16,7 @@ const SockTab = () => {
             <button className='btn'>
                 Add Sock
             </button>
+            <SockCardGrid />
         </TabButtonContainer>
     )
 }

@@ -13,6 +13,8 @@ import Alert from "./Alert";
 import TabButtonContainer from "./TabButtonContainer";
 import CategoryInfo from "./CategoryInfo";
 import Table from './Table'
+import SockCard from "./SockCard";
+import SockCardGrid from "./SockCardGrid";
 
 export {
     FormRow,
@@ -29,5 +31,7 @@ export {
     Alert,
     TabButtonContainer,
     CategoryInfo,
-    Table
+    Table,
+    SockCard,
+    SockCardGrid
 }
