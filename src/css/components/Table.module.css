@@ -1,0 +1,12 @@
+.table {
+  background-color: #b4c5e4;
+  color: #050758;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 1rem;
+  border-spacing: 0;
+}
+
+.yearTable > tbody > tr:nth-child(odd) {
+  background-color: #cadcff;
+}

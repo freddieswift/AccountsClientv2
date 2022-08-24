@@ -22,7 +22,7 @@ const YearInfoGroup = ({ name, text, readOnly }) => {
     }
 
     return (
-        <div>
+        <div className={classes.yearInfoGroup}>
             <h3>{text}</h3>
             <input
                 name={name}
@@ -30,7 +30,17 @@ const YearInfoGroup = ({ name, text, readOnly }) => {
                 value={value}
                 onChange={readOnly ? null : handleChange}
                 readOnly={readOnly}
-            ></input>
+            />
+            {(name === 'grossProfit' || name === 'netProfit') &&
+                <input
+                    value={name === 'grossProfit' ?
+                        (100 - ((100 * selectedYearInfo.totalCOS) / selectedYearInfo.turnover)).toFixed(2) + '%'
+                        :
+                        ((100 * selectedYearInfo.totalOH) / selectedYearInfo.turnover).toFixed(2) + '%'
+                    }
+                    readOnly={true}
+                />
+            }
         </div>
     )
 }

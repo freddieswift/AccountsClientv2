@@ -21,7 +21,7 @@ const FinancialTab = () => {
             {toggleAddYear && <AddYear toggleAddYearHandler={toggleAddYearHandler} />}
             <TabButtonContainer>
                 <button
-                    className={`btn ${classes.addYearButton}`}
+                    className='btn'
                     onClick={toggleAddYearHandler}
                 >
                     Add Year

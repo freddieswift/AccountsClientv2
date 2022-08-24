@@ -12,6 +12,7 @@ import AddEditCategory from "./AddEditCategory";
 import Alert from "./Alert";
 import TabButtonContainer from "./TabButtonContainer";
 import CategoryInfo from "./CategoryInfo";
+import Table from './Table'
 
 export {
     FormRow,
@@ -27,5 +28,6 @@ export {
     AddEditCategory,
     Alert,
     TabButtonContainer,
-    CategoryInfo
+    CategoryInfo,
+    Table
 }
