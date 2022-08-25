@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import classes from '../css/components/CategoryCard.module.css'
 import { AddEditCategory } from '../components'
 
-const CategoryCard = ({ name, value, total, id, categoryType }) => {
+const CategoryCard = ({ name, value, total, id, categoryType, turnover }) => {
 
     const [toggleEditCategory, setToggleEditCategory] = useState(false)
 
@@ -27,7 +27,7 @@ const CategoryCard = ({ name, value, total, id, categoryType }) => {
 
                 <p>{name}</p>
                 <div className={classes.valueContainer}>
-                    <p>{(100 * value) / total ? ((100 * value) / total).toFixed(2) : 0}%</p>
+                    <p>{(100 * value) / turnover ? ((100 * value) / turnover).toFixed(2) : 0}%</p>
                     <p>£{value}</p>
                 </div>
             </div>

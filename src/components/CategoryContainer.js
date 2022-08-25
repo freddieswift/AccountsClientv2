@@ -25,6 +25,7 @@ const CategoryContainer = ({ categoryType, title, saveSelectedYearHandler }) => 
             name={category.name}
             value={category.value}
             total={selectedYearInfo[`total${category.categoryType}`]}
+            turnover={selectedYearInfo.turnover}
             categoryType={categoryType}
         />
     })
